@@ -1,0 +1,19 @@
+@import "variables.scss"; // Include all variables for the site like fonts
+@import "mixins.scss"; // Include the CSS mixins
+@import "reset.scss"; // Include the general HTML reset
+
+/* Put all your main styles below here */
+
+
+
+
+h1 {
+  @include alignBoth;
+}
+
+
+
+* {
+  @include box-sizing(border-box);
+}
+
