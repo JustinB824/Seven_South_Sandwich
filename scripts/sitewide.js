@@ -3,5 +3,5 @@
  */
 console.log('Log!');
 
-$('header').load('header.html');
-$('footer').load('footer.html');
+$('header').load('views/header.html');
+$('footer').load('views/footer.html');

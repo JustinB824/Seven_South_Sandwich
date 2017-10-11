@@ -5,11 +5,13 @@ var gulp = require('gulp'),
     uglify = require('gulp-uglify'),
     concat = require('gulp-concat'),
     connect = require('gulp-connect'),
-    inject = require('gulp-inject');
+    inject = require('gulp-inject'),
+    imagemin = require('gulp-imagemin');
 
 var sassSources = ['scss/sitewide.scss'],
     jsSources = ['scripts/*.js'],
-    vendorSources = ['scripts/vendor/*js'],
+    vendorSources = ['scripts/vendor/*.js'],
+    viewSources = ['views/*.html'],
     htmlSources = ['**/*.html'],
     outputDir = 'public';
 
@@ -18,9 +20,12 @@ gulp.task('log', function() {
 });
 
 gulp.task('copy', function() {
-    //gulp.src('index.html')
+    gulp.src('index.html')
+        .pipe(gulp.dest(outputDir))
     gulp.src(vendorSources)
         .pipe(gulp.dest(outputDir + '/vendor/'))
+    gulp.src(viewSources)
+        .pipe(gulp.dest(outputDir + '/views/'))
 });
 
 gulp.task('sass', function() {
@@ -40,10 +45,16 @@ gulp.task('js', function() {
 });
 
 gulp.task('inject', function() {
-    var target = gulp.src('index.html');
-    var sources = gulp.src(['public/vendor/*.js', 'public/*.js', 'public/sitewide.css'], {read: false});
-    return target.pipe(inject(sources, { ignorePath:'public/vendor/html5-shiv.js' }))
-        .pipe(gulp.dest('./'));
+    var target = gulp.src('./public/index.html');
+    var sources = gulp.src(['./public/vendor/*.js', './public/*.js', './public/sitewide.css'], { read: false });
+    return target.pipe(inject(sources, { relative: true }))
+        .pipe(gulp.dest('./public'));
+});
+
+gulp.task('images', function() {
+    gulp.src('images/*')
+        .pipe(imagemin())
+        .pipe(gulp.dest('public/img/'))
 });
 
 gulp.task('watch', function() {
@@ -53,7 +64,7 @@ gulp.task('watch', function() {
 
 gulp.task('connect', function() {
     connect.server({
-        root: '.',
+        root: './public',
         livereload: true
     })
 });
@@ -63,4 +74,4 @@ gulp.task('html', function() {
     .pipe(connect.reload())
 });
 
-gulp.task('default', ['html', 'js', 'sass', 'copy', 'inject', 'connect', 'watch']);
+gulp.task('default', ['html', 'js', 'sass', 'copy', 'images', 'inject', 'connect', 'watch']);

@@ -7,6 +7,7 @@
     "gulp-uglify": "latest",
     "gulp-concat": "latest",
     "gulp-connect": "latest",
-    "gulp-inject": "latest"
+    "gulp-inject": "latest",
+    "gulp-imagemin": "latest"
   }
 }
