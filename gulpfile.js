@@ -4,7 +4,8 @@ var gulp = require('gulp'),
     coffee = require('gulp-coffee'),
     uglify = require('gulp-uglify'),
     concat = require('gulp-concat'),
-    connect = require('gulp-connect');
+    connect = require('gulp-connect'),
+    inject = require('gulp-inject');
 
 var sassSources = ['scss/sitewide.scss'],
     jsSources = ['scripts/*.js'],
@@ -24,7 +25,7 @@ gulp.task('copy', function() {
 
 gulp.task('sass', function() {
     gulp.src(sassSources)
-        .pipe(sass({style: 'compressed', includePaths: ['./scss']}))
+        .pipe(sass({outputStyle: 'compressed', includePaths: ['./scss']}))
         .on('error', gutil.log)
         .pipe(gulp.dest(outputDir))
         .pipe(connect.reload())
@@ -36,6 +37,13 @@ gulp.task('js', function() {
         .pipe(concat('sitewide.js'))
         .pipe(gulp.dest(outputDir))
         .pipe(connect.reload())
+});
+
+gulp.task('inject', function() {
+    var target = gulp.src('index.html');
+    var sources = gulp.src(['public/vendor/*.js', 'public/*.js', 'public/sitewide.css'], {read: false});
+    return target.pipe(inject(sources, { ignorePath:'public/vendor/html5-shiv.js' }))
+        .pipe(gulp.dest('./'));
 });
 
 gulp.task('watch', function() {
@@ -55,4 +63,4 @@ gulp.task('html', function() {
     .pipe(connect.reload())
 });
 
-gulp.task('default', ['html', 'js', 'sass', 'copy', 'connect', 'watch']);
+gulp.task('default', ['html', 'js', 'sass', 'copy', 'inject', 'connect', 'watch']);

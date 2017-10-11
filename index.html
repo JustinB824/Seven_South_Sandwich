@@ -7,9 +7,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
     <title>Gulp Setup</title>
+    <!-- index.html -->
 
     <link rel="icon" type="image/x-icon" href="favicon.ico" />
-    <link rel="stylesheet" href="public/sitewide.css"/>
+
+    <!-- inject:css -->
+    <link rel="stylesheet" href="/public/sitewide.css">
+    <!-- endinject -->
+
     <!--[if IE]><![endif]-->
     <!--[if lt IE 9]>
     <script src="public/vendor/html5-shiv.js"></script>
@@ -17,19 +22,19 @@
 </head>
 <body>
 
-<!-- all html content goes here -->
-<header></header>
+    <!-- all html content goes here -->
+    <header></header>
 
-<h1>Start Here</h1>
+    <h1>Start Here</h1>
 
-<footer></footer>
+    <footer></footer>
 
-<!-- Javascript library files -->
-<script src="public/vendor/jquery-3.1.0.min.js"></script>
-<script src="public/vendor/requestAnimationFrame.js"></script>
-<script src="public/vendor/respond.min.js"></script>
+    <!-- inject:js -->
+    <script src="/public/vendor/jquery-3.1.0.min.js"></script>
+    <script src="/public/vendor/requestAnimationFrame.js"></script>
+    <script src="/public/vendor/respond.min.js"></script>
+    <script src="/public/sitewide.js"></script>
+    <!-- endinject -->
 
-<!-- Main JS file -->
-<script src="public/sitewide.js"></script>
 </body>
 </html>
