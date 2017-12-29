@@ -12,7 +12,8 @@ var sassSources = ['scss/sitewide.scss'],
     jsSources = ['scripts/*.js'],
     vendorSources = ['scripts/vendor/*.js'],
     viewSources = ['views/*.html'],
-    htmlSources = ['**/*.html'],
+    htmlSources = ['**/*.html', '!views/*.html', '!public/**/*.html', '!node_modules/**/*.html'],
+    publicHtmlSources = ['./public/**/*.html', '!./public/views/*.html', '!./public/node_modules/**/*.html'],
     outputDir = 'public';
 
 gulp.task('log', function() {
@@ -20,12 +21,12 @@ gulp.task('log', function() {
 });
 
 gulp.task('copy', function() {
-    gulp.src('index.html')
-        .pipe(gulp.dest(outputDir))
+    gulp.src(htmlSources)
+        .pipe(gulp.dest(outputDir, {overwrite: true}))
     gulp.src(vendorSources)
-        .pipe(gulp.dest(outputDir + '/vendor/'))
+        .pipe(gulp.dest(outputDir + '/vendor/', {overwrite: true}))
     gulp.src(viewSources)
-        .pipe(gulp.dest(outputDir + '/views/'))
+        .pipe(gulp.dest(outputDir + '/views/', {overwrite: true}))
 });
 
 gulp.task('sass', function() {
@@ -45,14 +46,14 @@ gulp.task('js', function() {
 });
 
 gulp.task('inject', function() {
-    var target = gulp.src('./public/index.html');
+    var target = gulp.src(publicHtmlSources);
     var sources = gulp.src(['./public/vendor/*.js', './public/*.js', './public/sitewide.css'], { read: false });
     return target.pipe(inject(sources, { relative: true }))
         .pipe(gulp.dest('./public'));
 });
 
 gulp.task('images', function() {
-    gulp.src('images/*')
+    gulp.src('img/*')
         .pipe(imagemin())
         .pipe(gulp.dest('public/img/'))
 });

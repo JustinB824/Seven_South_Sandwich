@@ -6,22 +6,40 @@
     <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, width=device-width" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-    <title>Gulp Setup</title>
-    <!-- index.html -->
+    <title>Seven South Sandwich Company</title>
 
     <link rel="icon" type="image/x-icon" href="img/favicon.ico" />
 
     <!-- inject:css -->
     <!-- endinject -->
 
-    <!--[if IE]><![endif]-->
 </head>
 <body>
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.11';
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
 
-    <!-- all html content goes here -->
     <header></header>
 
-    <h1>Start Here</h1>
+    <main>
+        <div class="container">
+
+            <h1>7 South Sandwich Co.</h1>
+            <h2>Making great breakfast and lunch for residents and visitors of Middlebury, VT.</h2>
+
+            <div class="fb-page" data-href="https://www.facebook.com/7south" data-tabs="timeline" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="false">
+                <blockquote cite="https://www.facebook.com/7south" class="fb-xfbml-parse-ignore">
+                    <a href="https://www.facebook.com/7south">7 South Sandwich Company</a>
+                </blockquote>
+            </div>
+
+        </div>
+    </main>
 
     <footer></footer>
 

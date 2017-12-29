@@ -132,22 +132,17 @@
 	@include transform(translate(-50%, -50%));
 }
 
-@mixin phablet {
-	@media (min-width: 360px) {
+@mixin sm {
+	@media (min-width: 768px) {
 		@content;
 	}
 }
-@mixin small {
-	@media (min-width: 769px) {
-		@content;
-	}
-}
-@mixin desktop {
+@mixin md {
 	@media (min-width: 992px) {
 		@content;
 	}
 }
-@mixin superDesktop {
+@mixin lg {
 	@media (min-width: 1200px) {
 		@content;
 	}
