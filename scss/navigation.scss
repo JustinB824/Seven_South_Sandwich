@@ -113,12 +113,13 @@ header {
 
         /* Burger Icon Animation */
         #nav-icon2 {
+            display: block;
             width: 24px;
             height: 19px;
             position: absolute;
             top: 19px;
             right: 19px;
-            z-index: 3;
+            z-index: 4;
             @include transform(rotate(0deg));
             cursor: pointer;
         }
