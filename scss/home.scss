@@ -1,0 +1,92 @@
+#home {
+
+    #home-cta {
+        margin-bottom: 30px;
+        @include sm {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .actions {
+            margin: 0 0 20px;
+            @include sm {
+                flex-grow: 1;
+                flex-basis: 0;
+                float: left;
+            }
+
+            #home-logo {
+                display: block;
+                width: 100%;
+                height: auto;
+                max-width: 280px;
+                margin-bottom: 30px;
+            }
+
+            h3 {
+                margin-bottom: 0;
+                color: $green;
+                @include md {
+                    font-size: 22px;
+                    line-height: 28px;
+                }
+
+                span {
+                    margin: 0 0 20px;
+                    color: $orange;
+                    font-size: 22px;
+                    line-height: 28px;
+                    @include md {
+                        font-size: 26px;
+                        line-height: 32px;
+                    }
+                }
+            }
+
+            p {
+                @include md {
+                    font-size: 18px;
+                    line-height: 24px;
+                }
+            }
+
+            span {
+                display: block;
+                margin: 10px 0;
+                @include md {
+                    font-size: 18px;
+                    line-height: 24px;
+                    margin: 15px 0;
+                }
+            }
+        }
+
+        .fb-page {
+            margin-top: 30px;
+
+            @include sm {
+                flex-grow: 1;
+                flex-basis: 0;
+                float: left;
+                margin-top: 0;
+            }
+        }
+    }
+
+    #home-photos {
+        @include sm {
+            display: flex;
+            justify-content: space-between;
+        }
+        li {
+            @include responsiveImage;
+            padding: 5px 0;
+            @include sm {
+                flex-grow: 1;
+                flex-basis: 0;
+                float: left;
+                padding: 5px;
+            }
+        }
+    }
+}

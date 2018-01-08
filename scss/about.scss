@@ -1,6 +1,52 @@
 #about {
 
+    .founder {
+        @include sm {
+            display: flex;
+            justify-content: space-between;
+
+        }
+
+        #frame-circle {
+
+            @include sm {
+                width: 33%;
+                flex-grow: 1;
+                float: left;
+            }
+            .circle-frame {
+                margin: 0 auto 20px;
+            }
+        }
+
+        p {
+            @include sm {
+                width: 66%;
+                flex-grow: 1;
+                float: left;
+            }
+        }
+    }
+
+    .contact {
+        display: table;
+        margin-bottom: 10px;
+        font-size: 15px;
+        &.tel {
+            @include sm {
+                pointer-events: none;
+            }
+        }
+        &.em {
+            @include break-word;
+            margin-bottom: 30px;
+        }
+    }
+
     .map {
-        margin-top: 20px;
+        margin: 20px auto;
+        @include sm {
+            width: 80%;
+        }
     }
 }

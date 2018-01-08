@@ -17,10 +17,33 @@ footer {
     }
 
     .contact {
-        display: block;
-        margin-top: 5px;
+        display: inline-block;
+        vertical-align: middle;
+        margin: 0 auto;
         font-size: 12px;
         line-height: 16px;
+
+        &.add {
+            display: table;
+            margin-top: 5px;
+        }
+        &.tel {
+            @include sm {
+                pointer-events: none;
+            }
+        }
+        &.em {
+            &:before {
+                content: '';
+                position: relative;
+                display: inline-block;
+                vertical-align: middle;
+                margin-right: 8px;
+                width: 1px;
+                height: 15px;
+                background-color: $green;
+            }
+        }
     }
 }
 

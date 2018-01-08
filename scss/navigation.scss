@@ -1,147 +1,198 @@
 header {
-}
-
-#logo {
-    display: block;
-    position: absolute;
-    z-index: 4;
-    top: 2px;
-    left: 10px;
-    width: 55px;
-    @include responsiveImage;
-}
-
-#nav_bkgd {
-    position: fixed;
-    z-index: 2;
-    top: $headerHeightMobile;
-    right: -100%;
-    width: 100%;
-    height: calc(100% - #{$headerHeightMobile} - #{$footerHeightMobile});
-    background: $black;
-    @include transition(.5s ease-in-out);
-    &.open {
-        right: 0;
-        @include transition(.5s ease-in-out);
+    @include sm {
+        height: $headerHeight;
+        background: $black;
     }
 
-    #navigation {
+    #logo {
+        display: block;
         position: absolute;
-        width: 100%;
-        height: 100%;
-        overflow: auto;
-
+        z-index: 4;
+        top: 2px;
+        left: 10px;
+        width: 55px;
+        @include responsiveImage;
         @include sm {
-            display: flex;
-            justify-content: space-between;
+            display: inline-block;
+            vertical-align: middle;
+            position: relative;
+            top: auto;
+            left: auto;
+            width: 80px;
+        }
+    }
+
+    #nav_bkgd {
+        position: fixed;
+        z-index: 2;
+        top: $headerHeightMobile;
+        right: -100%;
+        width: 100%;
+        height: calc(100% - #{$headerHeightMobile} - #{$footerHeightMobile});
+        background: $black;
+        @include transition(.5s ease-in-out);
+        @include sm {
+            display: inline-block;
+            vertical-align: middle;
+            position: relative;
+            top: auto;
+            right: auto;
+            height: auto;
+            width: calc(100% - 90px);
+            background: none;
+        }
+        &.open {
+            right: 0;
+            @include transition(.5s ease-in-out);
         }
 
-        li {
-            a {
-                display: block;
-                padding: 25px;
-                margin-bottom: 1px;
-                background: $grey;
-                font-family: $sansSerif;
-                font-size: 20px;
-                color: $green;
+        #navigation {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            @include sm {
+                position: relative;
+                display: flex;
+                justify-content: flex-end;
+                overflow: hidden;
+            }
+
+            li {
+                @include sm {
+                    float: left;
+                }
+                a {
+                    position: relative;
+                    display: block;
+                    padding: 25px;
+                    margin-bottom: 1px;
+                    background: $grey;
+                    font-family: $sansSerif;
+                    font-size: 20px;
+                    color: $green;
+                    @include sm {
+                        padding: 10px 5px;
+                        margin: 0 0 0 40px;
+                        background: none;
+                    }
+                    &:after {
+                        @include transition(.5s ease-in-out);
+                        @include sm {
+                            content: '';
+                            @include alignHoriz;
+                            bottom: 3px;
+                            width: 0;
+                            height: 2px;
+                            background-color: $green;
+                        }
+                    }
+                    &:hover {
+                        &:after {
+                            @include sm {
+                                width: 100%;
+                            }
+                        }
+                    }
+                }
             }
         }
     }
-}
 
-#mobileBurger {
-    position: fixed;
-    z-index: 3;
-    top: 0;
-    right: 0;
-    width: 100%;
-    height: $headerHeightMobile;
-    background: $black;
-    @include md {
-        display: none;
-    }
-
-    /* Burger Icon Animation */
-    #nav-icon2 {
-        width: 24px;
-        height: 19px;
-        position: absolute;
-        top: 19px;
-        right: 19px;
+    #mobileBurger {
+        position: fixed;
         z-index: 3;
-        @include transform(rotate(0deg));
-        cursor: pointer;
-    }
+        top: 0;
+        right: 0;
+        width: 100%;
+        height: $headerHeightMobile;
+        background: $black;
+        @include sm {
+            display: none;
+        }
 
-    #nav-icon2 span {
-        display: block;
-        position: absolute;
-        height: 3px;
-        width: 50%;
-        background: $green;
-        opacity: 1;
-        @include transform(rotate(0deg));
-        @include transition(.25s ease-in-out);
-    }
+        /* Burger Icon Animation */
+        #nav-icon2 {
+            width: 24px;
+            height: 19px;
+            position: absolute;
+            top: 19px;
+            right: 19px;
+            z-index: 3;
+            @include transform(rotate(0deg));
+            cursor: pointer;
+        }
 
-    #nav-icon2 span:nth-child(even) {
-        left: 50%;
-        border-radius: 0 3px 3px 0;
-    }
+        #nav-icon2 span {
+            display: block;
+            position: absolute;
+            height: 3px;
+            width: 50%;
+            background: $green;
+            opacity: 1;
+            @include transform(rotate(0deg));
+            @include transition(.25s ease-in-out);
+        }
 
-    #nav-icon2 span:nth-child(odd) {
-        left: 0px;
-        border-radius: 3px 0 0 3px;
-    }
+        #nav-icon2 span:nth-child(even) {
+            left: 50%;
+            border-radius: 0 3px 3px 0;
+        }
 
-    #nav-icon2 span:nth-child(1), #nav-icon2 span:nth-child(2) {
-        top: 0px;
-    }
+        #nav-icon2 span:nth-child(odd) {
+            left: 0px;
+            border-radius: 3px 0 0 3px;
+        }
 
-    #nav-icon2 span:nth-child(3), #nav-icon2 span:nth-child(4) {
-        top: 8px;
-    }
+        #nav-icon2 span:nth-child(1), #nav-icon2 span:nth-child(2) {
+            top: 0px;
+        }
 
-    #nav-icon2 span:nth-child(5), #nav-icon2 span:nth-child(6) {
-        top: 16px;
-    }
+        #nav-icon2 span:nth-child(3), #nav-icon2 span:nth-child(4) {
+            top: 8px;
+        }
 
-    #nav-icon2.open span:nth-child(1), #nav-icon2.open span:nth-child(6) {
-        @include transform(rotate(45deg));
-    }
+        #nav-icon2 span:nth-child(5), #nav-icon2 span:nth-child(6) {
+            top: 16px;
+        }
 
-    #nav-icon2.open span:nth-child(2), #nav-icon2.open span:nth-child(5) {
-        @include transform(rotate(-45deg));
-    }
+        #nav-icon2.open span:nth-child(1), #nav-icon2.open span:nth-child(6) {
+            @include transform(rotate(45deg));
+        }
 
-    #nav-icon2.open span:nth-child(1) {
-        left: 2px;
-        top: 4px;
-    }
+        #nav-icon2.open span:nth-child(2), #nav-icon2.open span:nth-child(5) {
+            @include transform(rotate(-45deg));
+        }
 
-    #nav-icon2.open span:nth-child(2) {
-        left: calc(50% - 2px);
-        top: 4px;
-    }
+        #nav-icon2.open span:nth-child(1) {
+            left: 2px;
+            top: 4px;
+        }
 
-    #nav-icon2.open span:nth-child(3) {
-        left: -50%;
-        opacity: 0;
-    }
+        #nav-icon2.open span:nth-child(2) {
+            left: calc(50% - 2px);
+            top: 4px;
+        }
 
-    #nav-icon2.open span:nth-child(4) {
-        left: 100%;
-        opacity: 0;
-    }
+        #nav-icon2.open span:nth-child(3) {
+            left: -50%;
+            opacity: 0;
+        }
 
-    #nav-icon2.open span:nth-child(5) {
-        left: 2px;
-        top: 12px;
-    }
+        #nav-icon2.open span:nth-child(4) {
+            left: 100%;
+            opacity: 0;
+        }
 
-    #nav-icon2.open span:nth-child(6) {
-        left: calc(50% - 2px);
-        top: 12px;
+        #nav-icon2.open span:nth-child(5) {
+            left: 2px;
+            top: 12px;
+        }
+
+        #nav-icon2.open span:nth-child(6) {
+            left: calc(50% - 2px);
+            top: 12px;
+        }
     }
 }
+

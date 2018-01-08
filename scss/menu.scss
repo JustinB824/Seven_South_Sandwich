@@ -1,0 +1,46 @@
+#menu {
+
+    h3 {
+        border-bottom: 1px solid $green;
+    }
+
+    ul {
+        li {
+            .item {
+                color: $green;
+            }
+            .price {
+                color: $orange;
+            }
+
+            ul {
+                margin: 5px 0 20px 30px;
+                li {
+                    margin-bottom: 10px;
+                    .item {
+                        color: $black;
+                    }
+                }
+            }
+        }
+
+        &#custom-creations {
+            @include sm {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-between;
+            }
+
+            > li {
+                @include sm {
+                    width: 33%;
+                    flex-grow: 1;
+                    float: left;
+                }
+                @include md {
+                    width: auto;
+                }
+            }
+        }
+    }
+}
