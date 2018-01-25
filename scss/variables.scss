@@ -7,10 +7,29 @@ $greenHover: #00c862;
 $orange: #d55e33;
 $grey: #222;
 
-$serif: '';
-$sansSerif: 'Verdana', sans-serif;
+$serif: 'Copperplate', serif;
+$sansSerif: 'ClearViewHwy', sans-serif;
 
 $headerHeightMobile: 60px;
 $headerHeight: 100px;
 
 $footerHeightMobile: 85px;
+
+@font-face {
+    font-family: 'ClearViewHwy';
+    src: url('fonts/clearviewhwy_4b.woff2') format('woff2'),
+    url('fonts/clearviewhwy_4b.woff') format('woff'),
+    url('fonts/clearviewhwy_4b.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Copperplate';
+    src: url('fonts/copperplate_gothic_regular.woff2') format('woff2'),
+    url('fonts/copperplate_gothic_regular.woff') format('woff'),
+    url('fonts/copperplate_gothic_regular.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'CopperPlateBold';
+    src: url('fonts/copperplate_gothic_bold_regular.woff2') format('woff2'),
+    url('fonts/copperplate_gothic_bold_regular.woff') format('woff'),
+    url('fonts/copperplate_gothic_bold_regular.ttf') format('truetype');
+}

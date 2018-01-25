@@ -13,17 +13,17 @@ if (location.pathname.split("/")[1] != '') {
 $('header').load(include_dir + 'header.html');
 $('footer').load(include_dir + 'footer.html');
 
-$(function() {
-
-    $('#nav-icon2').on('click', function(e) {
-        e.stopPropagation();
-        $('#nav_bkgd, #nav-icon2').toggleClass('open');
-        return false;
-    });
-
-});
-
 function menu() {
     $('#nav_bkgd, #nav-icon2').toggleClass('open');
     return false;
 }
+
+$(function() {
+
+    //$('#nav-icon2').on('click', function(e) {
+        //e.stopPropagation();
+        //$('#nav_bkgd, #nav-icon2').toggleClass('open');
+        //return false;
+    //});
+
+});

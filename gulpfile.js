@@ -21,6 +21,8 @@ gulp.task('log', function() {
 });
 
 gulp.task('copy', function() {
+    gulp.src('fonts/*')
+        .pipe(gulp.dest(outputDir + '/fonts/', {overwrite: true}))
     gulp.src(htmlSources)
         .pipe(gulp.dest(outputDir, {overwrite: true}))
     gulp.src(vendorSources)
