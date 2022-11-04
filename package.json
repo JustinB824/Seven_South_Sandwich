@@ -1,6 +1,6 @@
 {
   "devDependencies": {
-    "gulp": "^3.9.0",
+    "gulp": "^4.0.2",
     "gulp-coffee": "latest",
     "gulp-concat": "latest",
     "gulp-connect": "latest",
